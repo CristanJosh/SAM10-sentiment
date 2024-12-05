@@ -39,7 +39,7 @@ jobs:
 
       # Build assets with npm
       - name: Build assets with npm
-        run: npm run dev  # Ensure development build
+        run: npm run build  # Ensure development build
 
       # Zip the release files for deployment
       - name: Zip artifact for deployment
