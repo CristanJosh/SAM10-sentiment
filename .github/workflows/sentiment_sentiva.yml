@@ -27,9 +27,9 @@ jobs:
         with:
           files: 'composer.json'
 
-      - name: Run composer install
-        run: |
-          composer install --prefer-dist --no-progress
+      - name: Run composer install if composer.json exists
+        if: steps.check_files.outputs.files_exists == 'true'
+        run: composer validate --no-check-publish && composer install --prefer-dist --no-progress
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
@@ -39,13 +39,6 @@ jobs:
         with:
           name: php-app
           path: release.zip
-
-      - name: Install npm dependencies
-        run: npm install
-
-      - name: Build production assets
-        run: npm run build
-
 
   deploy:
     runs-on: ubuntu-latest
@@ -70,4 +63,4 @@ jobs:
           app-name: 'sentiva'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6671B9B9FBDB45FC8034506EF3052FE5 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6F893FF65F0F4AC995E64C8492A540B5 }}
