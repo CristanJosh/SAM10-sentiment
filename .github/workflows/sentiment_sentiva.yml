@@ -1,6 +1,9 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
 name: Build and deploy PHP app to Azure Web App - sentiva
 
 on:
@@ -37,9 +40,9 @@ jobs:
       - name: Install npm dependencies
         run: npm install
 
-      # Build assets with npm
+      # Build assets with npm (production build using Vite)
       - name: Build assets with npm
-        run: npm run build  # Ensure development build
+        run: npm run production  # Use production build to ensure assets are compiled
 
       # Zip the release files for deployment
       - name: Zip artifact for deployment
