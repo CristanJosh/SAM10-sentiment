@@ -2,9 +2,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build",  // Ensure the build command is correct
-    "dev": "vite",  // This is for development mode
-    "production": "vite build --mode production"  // Add production build script
+    "build": "vite build",
+    "dev": "vite",
+    "production": "vite build --mode production"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.2",
