@@ -20,6 +20,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Bind the public path to 'public_html'
+        $this->app->bind('path.public', function () {
+            return base_path() . '/../public_html';
+        });
+
+        // Configure the dashboard view
         View::composer('dashboard', function ($view) {
             $user = auth()->user();
 
